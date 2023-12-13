@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javaScript">
+        const desenha = () =>{
+
+            let canvas = document.getElementById('desenho') // pegando a janela canvas
+            let contexto = canvas.getContext("2d") // pegando o contexto onde vai ser desenhado
+
+            contexto.fillStyle = '#00f' // definindo cor
+            contexto.rect(10,10,50,50)  // desenha um retangulo mais não o preenche
+
+            contexto.fillStyle = '#00f' // definindo cor
+            contexto.rect(20,20,50,50)  // desenha um retangulo mais não o preenche
+
+            contexto.fill() // o fill preenche todos os retangulo
+
+            contexto.clearRect(30,30,30,30) // cria uma area que é apagada
+            
+        }
+    </script>
+    <title>exemplo2</title>
+</head>
+<body onload = "desenha()">
+    
+
+    <canvas id="desenho" width="500" height="500">
+    </canvas>
+
+    
+</body>
+</html>
