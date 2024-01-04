@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>exemplo6</title>
+</head>
+<body>
+    
+
+    <canvas id="desenho" width="500" height="500">
+    </canvas>
+    
+    <script type="text/javaScript">
+        let px = 0 //posicão x
+        let py = 0 //posição y
+        let tamanho = 50
+        let altura = 50
+        let direcaoX = 0
+        let direcaoY = 0
+        let canvasA=canvasL=500
+        let anima //variavel que recebe animacão em fames
+        let canvas = document.getElementById('desenho') //defindo o contexto apenas uma ves e não a cada ciclo
+        let contexto = canvas.getContext("2d")
+
+        const desenha = () =>{
+            contexto.clearRect(0,0,canvasA,canvasL) //linpando o frame para redesenhar
+            
+            contexto.fillStyle = '#f00'
+            contexto.fillRect(px,py,tamanho,altura)
+            contexto.lineWidth = 3
+            contexto.strokeStyle = '#008'
+            contexto.strokeRect(px,py,tamanho,altura)
+
+            
+            px += direcaoX //encrementando ao px
+            py += direcaoY
+
+            if((px <= 0) && (py <= 0)){
+                direcaoX = 1
+                direcaoY = 0
+            }
+            if((px + tamanho === canvasL) && (py <= 0)){
+                direcaoX = 0
+                direcaoY = 1
+            }
+            if ((px + tamanho === canvasL) && (py + tamanho === canvasA)){
+                direcaoX = -1
+                direcaoY = 0
+            }
+            if((px === 0)&&(py + tamanho === canvasA)){
+                direcaoY = -1
+                direcaoX = 0
+            }
+            
+            anima = requestAnimationFrame(desenha) //atualiza frames
+        }
+        desenha() //se não chamar a funcão no on load tem que chamar aqui
+    </script>
+    
+</body>
+</html>
